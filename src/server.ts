@@ -35,7 +35,7 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 // Add APIs
-app.use('/api', BaseRouter);
+app.use('/', BaseRouter);
 
 // Print API errors
 app.use((err: Error, req: Request, res: Response) => {
