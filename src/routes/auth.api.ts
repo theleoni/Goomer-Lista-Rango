@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 
-import { AuthDao } from '../controllers';
+import { AuthDao } from '../daos';
 
 // Init shared
 const router = Router();

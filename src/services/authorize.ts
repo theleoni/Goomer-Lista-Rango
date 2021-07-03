@@ -7,7 +7,7 @@ import passportJWT from 'passport-jwt';
 const LocalStrategy = require('passport-local').Strategy,
 	ExtractJwt = require('passport-jwt').ExtractJwt;
 const JWTStrategy = passportJWT.Strategy;
-import { DB } from '../controllers/index';
+import { DB } from '../daos/index';
 
 passport.use(
 	new LocalStrategy(

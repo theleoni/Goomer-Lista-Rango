@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import passport from 'passport';
 // import ProductRouter from './product.api';
-import DinnerRouter from './dinner.api';
+import DinnerRouter from './dinner';
 import AuthRouter from './auth.api';
 
 // Init router and path
@@ -14,7 +14,7 @@ router.use('/auth', AuthRouter);
 // console `req.user` and `req` in authorize middleware
 // router.use('/product', passport.authenticate('jwt', {session: false}), ProductRouter);
 
-//passport.authenticate('jwt', {session: false}), 
+//passport.authenticate('jwt', {session: false}),
 router.use('/dinner', DinnerRouter);
 
 // Export the base-router
