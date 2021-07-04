@@ -1,5 +1,5 @@
 // import { IProduct } from '../../models/index';
-// import { DB } from '../index';
+// import { DB } from '../../models/index';
 //
 // export interface IProductDao {
 // 	read: () => Promise<IProduct[]>;

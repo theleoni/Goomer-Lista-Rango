@@ -11,20 +11,17 @@ export class DinnerModel implements Model {
     this.CONN = conn;
   }
 
-
   async list(): Promise<Dinner[]> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
         `SELECT id, name, address FROM ${this.tableName}`,
       );
-      return data.rows.map(e => {
-        return {
-          id: e.id,
-          picture: e.picture,
-          name: e.name,
-          fullAddress: e.address,
-        } as Dinner;
-      });
+      return data.rows.map(e => ({
+        id: e.id,
+        picture: e.picture || undefined,
+        name: e.name,
+        fullAddress: e.address || undefined,
+      } as Dinner));
     } catch (err) {
       throw err;
     }
@@ -37,7 +34,10 @@ export class DinnerModel implements Model {
       );
       const { id, picture, name, address } = data.rows[0];
       return {
-        id, picture, name, fullAddress: address
+        id,
+        picture: picture || undefined,
+        name,
+        fullAddress: address || undefined
       } as Dinner;
     } catch (err) {
       throw err;
