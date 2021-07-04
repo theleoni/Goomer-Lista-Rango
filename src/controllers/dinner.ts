@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { ParamsDictionary } from 'express-serve-static-core';
-import { DinnerDao as Dao } from '../daos/index';
+import { DinnerDao as Dao } from '../daos/dinner';
 
 const dao = new Dao();
 

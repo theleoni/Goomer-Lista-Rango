@@ -8,9 +8,11 @@ export interface Dinner {
 }
 
 export interface WorkingHour {
+  id?: string;
+  dinner?:string;
   weekDay: WeekDays;
-  open: number;
-  close: number;
+  open: string;
+  close: string;
 }
 
 export enum WeekDays {

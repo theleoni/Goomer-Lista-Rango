@@ -2,7 +2,7 @@
 
 import { Request, Response } from 'express';
 import { IAuth } from '../../models/index';
-import { DB } from '../index';
+import { DB } from '../../models/index';
 import passport from 'passport';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
