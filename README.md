@@ -19,7 +19,7 @@ Foi decidido também não criar branches dos épicos por conta do pouco tempo, p
 ## Informações úteis
 
 ### Boilerplate utilizado
-Para criar a estrutura básica do `express` foi utilizado um boilerplate básico. Com o objetivo de utilizar Typescript (TS) no projeto, o boilerplate escolhido foi (xpress-boilerplate-generator)[https://www.npmjs.com/package/express-boilerplate-generator]. Devido a complexidade do código e de certos padrões seguido pelo boilerplate, muitas das estruturas e configurações foram alteradas, mantendo apenas o básico do `express` para o TS;
+Para criar a estrutura básica do `express` foi utilizado um boilerplate básico. Com o objetivo de utilizar Typescript (TS) no projeto, o boilerplate escolhido foi [express-boilerplate-generator](https://www.npmjs.com/package/express-boilerplate-generator). Devido a complexidade do código e de certos padrões seguido pelo boilerplate, muitas das estruturas e configurações foram alteradas, mantendo apenas o básico do `express` para o TS;
 
 ### Banco de Dados (BD)
 A API precisa de um BD PostgreSQL para se comunicar. A extrutura deste BD pode ser encontrada no arquivo: `./DB_STARTER.sql`.
