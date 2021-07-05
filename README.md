@@ -18,6 +18,13 @@ Foi decidido também não criar branches dos épicos por conta do pouco tempo, p
 
 ## Informações úteis
 
+### Download do projeto
+Após baixar o projeto é preciso instalar os pacotes do projeto com o `NPM`. A execução será feita utilizando `NODE`.
+Dentro do pacote do projeto, instale os pacote com o comando:
+```
+npm i 
+```
+
 ### Boilerplate utilizado
 Para criar a estrutura básica do `express` foi utilizado um boilerplate básico. Com o objetivo de utilizar Typescript (TS) no projeto, o boilerplate escolhido foi [express-boilerplate-generator](https://www.npmjs.com/package/express-boilerplate-generator). Devido a complexidade do código e de certos padrões seguido pelo boilerplate, muitas das estruturas e configurações foram alteradas, mantendo apenas o básico do `express` para o TS;
 
