@@ -29,6 +29,9 @@ A API precisa de um BD PostgreSQL para se comunicar. A extrutura deste BD pode s
 
 Foi incuído no projeto um arquivo `./.env.example` dos atributos necessário no arquivo `./.env`. Você pode utilizá-lo como ponto de partida.
 
+### Postman Collection
+Dentro do projeto está exportada a coleção `./postmanCollection/Goomer.postman_collection.json` que foi utilizada para testar e validar os endpoints e exemplificam como utilizar a API.
+
 #### NODE_ENV
 
 Entre os atributos deste arquivo, há um específico chamado `NODE_ENV` que define algumas questões de nível de logs e informações fornecidas no console da API e também na resposta em caso de erro.
