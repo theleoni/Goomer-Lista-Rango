@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start:dev": "nodemon",
-    "start": "node -r module-alias/register ./dist --env=developement",
+    "start": "npm run build && node -r ./dist",
     "build": "del-cli ./dist && tsc --build tsconfig.prod.json",
     "builder": "node build.js",
     "lint": "tslint --project \"tsconfig.json\"",
