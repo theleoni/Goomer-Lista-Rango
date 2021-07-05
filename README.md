@@ -52,9 +52,12 @@ npm run start:dev
 
 ## O que ainda não foi implementado (baseado no desafio)
 - Tratar e salvar as fotos;
--
+- Cadastro de Produtos e itens que dependem deste;
+- Testes unitários;
 
 ## Pontos de melhoria
+_O que já foi elencado no item anterior, não será elencado aqui também._
+
 - Implementação do Swagger para documentar os endpoints da API;
 - Adicionar Timeout nas requisições dos endpoint;
 - No cadastro de Restaurantes
