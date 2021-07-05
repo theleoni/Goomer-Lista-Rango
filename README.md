@@ -12,7 +12,7 @@ A implementação desta API está sendo feita em pequenas partes, para que seja 
 A implementação desta API foi estruturada previamente com Tasks e User Story com Sprints no Notion, para acessar e acompanhar o andamento da implementação [clique aqui](https://www.notion.so/Descrever-poss-veis-melhorias-no-projeto-1e52128f9bdc4b499c301f111ef724cf).
 
 ### Estrutura GIT
-As branches foram criadas seguindo os IDs gerados para cada card do board. Assim é possível acompanhar as branches e os pull requests (PR) realizado em conjunto com o board.
+As branches foram criadas seguindo os IDs gerados para cada card do board, mas seguindo a estrutura do Git Flow. Assim é possível acompanhar as branches e os pull requests (PR) realizado em conjunto com o board.
 
 Foi decidido também não criar branches dos épicos por conta do pouco tempo, pois assim oneraria demais o PRs sendo que a implementação foi feita apenas por eu.
 
