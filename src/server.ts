@@ -19,8 +19,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Catch and handle an error as it deserves
-app.use(errorMiddleware);
 // app.use(cookieParser());
 
 // Show routes called in console during development
@@ -40,6 +38,9 @@ app.get('/', (req: Request, res: Response) => {
 
 // Add APIs routes/paths
 app.use('/', BaseRouter);
+
+// Catch and handle an error as it deserves
+app.use(errorMiddleware);
 
 // // Print API errors
 // app.use((err: Error, req: Request, res: Response) => {
