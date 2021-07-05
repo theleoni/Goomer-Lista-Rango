@@ -48,8 +48,3 @@ export class DB {
     return DB.instance.models;
   }
 }
-
-export * from './user.model';
-// export * from './dinner';
-// export * from './workingHours';
-// export * from './product.model';
