@@ -9,7 +9,7 @@ Esta API foi criada a partir do desafio [Goomer Dev Backend Interview](https://g
 A implementação desta API está sendo feita em pequenas partes, para que seja possível trabalhar em poucas horas em cada tarefa. Assim foi trabalhar no pouco tempo disponível.
 
 ### Board Kanban Notion
-A implementação desta API foi estruturada previamente com Tasks e User Story com Sprints no Notion, para acessar e acompanhar o andamento da implementação [clique aqui](https://www.notion.so/Descrever-poss-veis-melhorias-no-projeto-1e52128f9bdc4b499c301f111ef724cf).
+A implementação desta API foi estruturada previamente com Tasks e User Story com Sprints no Notion, para acessar e acompanhar o andamento da implementação [clique aqui](https://www.notion.so/19338ed5025044ce9502444c7027bc1b?v=3347c2ab76764b17b35c96aa3ee13292).
 
 ### Estrutura GIT
 As branches foram criadas seguindo os IDs gerados para cada card do board, mas seguindo a estrutura do Git Flow. Assim é possível acompanhar as branches e os pull requests (PR) realizado em conjunto com o board.
