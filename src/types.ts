@@ -9,7 +9,7 @@ export interface Dinner {
 
 export interface WorkingHour {
   id?: string;
-  dinner?:string;
+  dinner?: string; // handle the fk (Dinner)
   weekDay: WeekDays;
   open: string;
   close: string;
@@ -23,4 +23,25 @@ export enum WeekDays {
   Friday = 4,
   Saturday = 5,
   Sunday = 6,
+}
+
+export interface Product {
+  id?: string;
+  picture?: any;
+  name: string;
+  price: number;
+  category: string;
+  promotion?: {
+    description: string;
+    price: number;
+    promotionHour: ProductPromotionHour[];
+  };
+}
+
+export interface ProductPromotionHour {
+  id?: string;
+  product?:string; // handle the fk (Product)
+  weekDay: WeekDays;
+  begin: string;
+  end: string;
 }
