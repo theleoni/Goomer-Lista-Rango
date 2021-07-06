@@ -11,7 +11,7 @@ export class WorkingHourModel implements Model {
     this.CONN = conn;
   }
 
-  async list(_idDinner: string): Promise<WorkingHour[]> {
+  async list(_idRestaurant: string): Promise<WorkingHour[]> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
         `SELECT * FROM ${this.tableName}`,
@@ -29,10 +29,10 @@ export class WorkingHourModel implements Model {
   async add(_workingHour: WorkingHour): Promise<WorkingHour> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
-        `INSERT INTO ${this.tableName}(id, dinner, weekday, open, close) VALUES ($1, $2, $3, $4, $5)`,
+        `INSERT INTO ${this.tableName}(id, restaurant, weekday, open, close) VALUES ($1, $2, $3, $4, $5)`,
         [
           _workingHour.id,
-          _workingHour.dinner,
+          _workingHour.restaurant,
           _workingHour.weekDay,
           _workingHour.open,
           _workingHour.close,
@@ -55,11 +55,11 @@ export class WorkingHourModel implements Model {
     }
   }
 
-  async deleteAll(_idDinner: string): Promise<void> {
+  async deleteAll(_idRestaurant: string): Promise<void> {
     try {
       await this.CONN.query(
-        `DELETE FROM ${this.tableName} WHERE dinner=$1`,
-        [_idDinner],
+        `DELETE FROM ${this.tableName} WHERE restaurant=$1`,
+        [_idRestaurant],
       );
     } catch (err) {
       throw err;
