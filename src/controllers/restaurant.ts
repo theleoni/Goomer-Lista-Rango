@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 import { ParamsDictionary } from 'express-serve-static-core';
 
-import { DinnerDao as Dao } from '../daos/dinner';
-import { DinnerValidation } from './dinner.validation';
+import { RestaurantDao as Dao } from '../daos/restaurant';
+import { RestaurantValidation } from './restaurant.validation';
 import { BadRequestError } from '../errorTypes';
 
 const dao = new Dao();
 
-export class DinnerController {
+export class RestaurantController {
 
   /**
   * <h1>GET /</h1>
@@ -43,7 +43,7 @@ export class DinnerController {
   async add(req: Request, res: Response, next: NextFunction) {
     try {
       // validate body data
-      const { error } = DinnerValidation.validate(req.body);
+      const { error } = RestaurantValidation.validate(req.body);
       if (error) {
         throw new BadRequestError(error.message);
       }
@@ -62,7 +62,7 @@ export class DinnerController {
   async update(req: Request, res: Response, next: NextFunction) {
     try {
       // validate body data
-      const { error: bodyError } = DinnerValidation.validate(req.body);
+      const { error: bodyError } = RestaurantValidation.validate(req.body);
       if (bodyError) {
         throw new BadRequestError(bodyError.message);
       }

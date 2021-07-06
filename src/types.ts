@@ -1,5 +1,5 @@
 
-export interface Dinner {
+export interface Restaurant {
   id?: string;
   picture?: any;
   name: string;
@@ -9,7 +9,7 @@ export interface Dinner {
 
 export interface WorkingHour {
   id?: string;
-  dinner?: string; // handle the fk (Dinner)
+  restaurant?: string; // handle the fk (Restaurant)
   weekDay: WeekDays;
   open: string;
   close: string;

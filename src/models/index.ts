@@ -1,6 +1,6 @@
 import { Pool } from 'pg';
 
-import { DinnerModel } from './dinner';
+import { RestaurantModel } from './restaurant';
 import { WorkingHourModel } from './workingHours';
 
 export interface Model {
@@ -14,7 +14,7 @@ export class DB {
 
   // private mongoDB: Connection;
   private models: {
-    Dinner: DinnerModel;
+    Restaurant: RestaurantModel;
     WorkingHour: WorkingHourModel;
     // Product: IProductModel;
     // User: IAuthModel;
@@ -35,7 +35,7 @@ export class DB {
     }
 
     this.models = {
-      Dinner: new DinnerModel(this.poolConnection),
+      Restaurant: new RestaurantModel(this.poolConnection),
       WorkingHour: new WorkingHourModel(this.poolConnection),
     };
   }

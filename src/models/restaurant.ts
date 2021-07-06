@@ -1,17 +1,17 @@
 import { Pool, QueryResult } from 'pg';
-import { Dinner } from '../types';
+import { Restaurant } from '../types';
 import { Model } from './index';
 
-export class DinnerModel implements Model {
+export class RestaurantModel implements Model {
 
-  tableName = 'dinner';
+  tableName = 'restaurant';
   CONN: Pool;
 
   constructor(conn: Pool) {
     this.CONN = conn;
   }
 
-  async list(): Promise<Dinner[]> {
+  async list(): Promise<Restaurant[]> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
         `SELECT id, name, address FROM ${this.tableName}`,
@@ -21,13 +21,13 @@ export class DinnerModel implements Model {
         picture: e.picture || undefined,
         name: e.name,
         fullAddress: e.address || undefined,
-      } as Dinner));
+      } as Restaurant));
     } catch (err) {
       throw err;
     }
   }
 
-  async get(_id: string): Promise<Dinner> {
+  async get(_id: string): Promise<Restaurant> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
         `SELECT * FROM ${this.tableName} WHERE id = $1 LIMIT 1`, [_id],
@@ -38,44 +38,44 @@ export class DinnerModel implements Model {
         picture: picture || undefined,
         name,
         fullAddress: address || undefined
-      } as Dinner;
+      } as Restaurant;
     } catch (err) {
       throw err;
     }
   }
 
-  async add(_dinner: Dinner): Promise<Dinner> {
+  async add(_restaurant: Restaurant): Promise<Restaurant> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
         `INSERT INTO ${this.tableName}(id, picture, name, address) VALUES ($1, $2, $3, $4)`,
         [
-          _dinner.id,
-          _dinner.picture,
-          _dinner.name,
-          _dinner.fullAddress,
+          _restaurant.id,
+          _restaurant.picture,
+          _restaurant.name,
+          _restaurant.fullAddress,
         ]
       );
-      return _dinner;
+      return _restaurant;
     } catch (err) {
       throw err;
     }
   }
 
-  async update(_id: string, _dinner: Dinner): Promise<Dinner> {
+  async update(_id: string, _restaurant: Restaurant): Promise<Restaurant> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
         `UPDATE ${this.tableName} SET picture=$2, name=$3, address=$4 WHERE id=$1`,
         [
           _id,
-          _dinner.picture,
-          _dinner.name,
-          _dinner.fullAddress,
+          _restaurant.picture,
+          _restaurant.name,
+          _restaurant.fullAddress,
         ]
       );
       return {
         _id,
-        ..._dinner,
-      } as Dinner;
+        ..._restaurant,
+      } as Restaurant;
     } catch (err) {
       throw err;
     }

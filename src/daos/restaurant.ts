@@ -1,14 +1,14 @@
-import { Dinner } from '../types';
+import { Restaurant } from '../types';
 import { DB } from '../models/index';
 import { v4 as uuidv4 } from 'uuid';
 
-export class DinnerDao {
+export class RestaurantDao {
 
 	/**
 	*
 	*/
-	async list(): Promise<Dinner[]> {
-		const data = await DB.Models.Dinner.list();
+	async list(): Promise<Restaurant[]> {
+		const data = await DB.Models.Restaurant.list();
 		return data;
 	}
 
@@ -16,8 +16,8 @@ export class DinnerDao {
 	/**
 	* @param id
 	*/
-	async get(id: string): Promise<Dinner | null> {
-		const data = await DB.Models.Dinner.get(id);
+	async get(id: string): Promise<Restaurant | null> {
+		const data = await DB.Models.Restaurant.get(id);
 		data.workingHours = await DB.Models.WorkingHour.list(id);
 		return data;
 	}
@@ -26,15 +26,15 @@ export class DinnerDao {
 	*
 	* @param dinner
 	*/
-	async add(dinner: Dinner): Promise<Dinner> {
-		const data = await DB.Models.Dinner.add({
+	async add(dinner: Restaurant): Promise<Restaurant> {
+		const data = await DB.Models.Restaurant.add({
 			id: uuidv4(),
 			...dinner,
 		});
 		await Promise.all(data.workingHours.map(hour => {
 			return DB.Models.WorkingHour.add({
 				id: uuidv4(),
-				dinner: data.id,
+				restaurant: data.id,
 				weekDay: hour.weekDay,
 				open: hour.open,
 				close: hour.close,
@@ -48,9 +48,9 @@ export class DinnerDao {
 	* @param dinner
 	* @param id
 	*/
-	async update(id: string, dinner: Dinner): Promise<Dinner> {
+	async update(id: string, dinner: Restaurant): Promise<Restaurant> {
 		//validate working hour
-		const data = await DB.Models.Dinner.update(id, dinner);
+		const data = await DB.Models.Restaurant.update(id, dinner);
 		//update working hour
 		return data;
 	}
@@ -62,6 +62,6 @@ export class DinnerDao {
 	*/
 	async delete(id: string): Promise<void> {
 		await DB.Models.WorkingHour.deleteAll(id);
-		await DB.Models.Dinner.delete(id);
+		await DB.Models.Restaurant.delete(id);
 	}
 }
