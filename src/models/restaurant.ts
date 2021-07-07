@@ -14,11 +14,11 @@ export class RestaurantModel implements Model {
   async list(): Promise<Restaurant[]> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
-        `SELECT id, name, address FROM ${this.tableName}`,
+        `SELECT id, name, address
+        FROM ${this.tableName}`,
       );
       return data.rows.map(e => ({
         id: e.id,
-        picture: e.picture || undefined,
         name: e.name,
         fullAddress: e.address || undefined,
       } as Restaurant));
@@ -30,7 +30,10 @@ export class RestaurantModel implements Model {
   async get(_id: string): Promise<Restaurant> {
     try {
       const data: QueryResult<any> = await this.CONN.query(
-        `SELECT * FROM ${this.tableName} WHERE id = $1 LIMIT 1`, [_id],
+        `SELECT *
+        FROM ${this.tableName}
+        WHERE id = $1 LIMIT 1`,
+        [_id],
       );
       const { id, picture, name, address } = data.rows[0];
       return {
@@ -46,8 +49,9 @@ export class RestaurantModel implements Model {
 
   async add(_restaurant: Restaurant): Promise<Restaurant> {
     try {
-      const data: QueryResult<any> = await this.CONN.query(
-        `INSERT INTO ${this.tableName}(id, picture, name, address) VALUES ($1, $2, $3, $4)`,
+      await this.CONN.query(
+        `INSERT INTO ${this.tableName}(id, picture, name, address)
+        VALUES ($1, $2, $3, $4)`,
         [
           _restaurant.id,
           _restaurant.picture,
@@ -63,8 +67,10 @@ export class RestaurantModel implements Model {
 
   async update(_id: string, _restaurant: Restaurant): Promise<Restaurant> {
     try {
-      const data: QueryResult<any> = await this.CONN.query(
-        `UPDATE ${this.tableName} SET picture=$2, name=$3, address=$4 WHERE id=$1`,
+      await this.CONN.query(
+        `UPDATE ${this.tableName}
+        SET picture=$2, name=$3, address=$4
+        WHERE id=$1`,
         [
           _id,
           _restaurant.picture,
@@ -73,8 +79,8 @@ export class RestaurantModel implements Model {
         ]
       );
       return {
-        _id,
         ..._restaurant,
+        id: _id,
       } as Restaurant;
     } catch (err) {
       throw err;
@@ -84,7 +90,9 @@ export class RestaurantModel implements Model {
   async delete(_id: string): Promise<void> {
     try {
       await this.CONN.query(
-        `DELETE FROM ${this.tableName} WHERE id=$1`,
+        `DELETE
+        FROM ${this.tableName}
+        WHERE id=$1`,
         [_id],
       );
     } catch (err) {
