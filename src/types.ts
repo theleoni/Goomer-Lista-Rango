@@ -27,6 +27,7 @@ export enum WeekDays {
 
 export interface Product {
   id?: string;
+  restaurant: string; // handle the fk (Restaurant)
   picture?: any;
   name: string;
   price: number;
@@ -34,7 +35,7 @@ export interface Product {
   promotion?: {
     description: string;
     price: number;
-    promotionHour: ProductPromotionHour[];
+    promotionHours: ProductPromotionHour[];
   };
 }
 

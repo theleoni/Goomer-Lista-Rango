@@ -31,7 +31,7 @@ export class RestaurantDao {
 			id: uuidv4(),
 			...restaurant,
 		});
-		await Promise.all(data.workingHours.map(hour => {
+		data.workingHours = await Promise.all(restaurant.workingHours.map(hour => {
 			return DB.Models.WorkingHour.add({
 				id: uuidv4(),
 				restaurant: data.id,
@@ -43,18 +43,24 @@ export class RestaurantDao {
 		return data;
 	}
 
-
 	/**
 	* @param restaurant
 	* @param id
 	*/
 	async update(id: string, restaurant: Restaurant): Promise<Restaurant> {
-		//validate working hour
+		await DB.Models.WorkingHour.deleteAll(id);
 		const data = await DB.Models.Restaurant.update(id, restaurant);
-		//update working hour
+		data.workingHours = await Promise.all(restaurant.workingHours.map(hour => {
+			return DB.Models.WorkingHour.add({
+				id: uuidv4(),
+				restaurant: data.id,
+				weekDay: hour.weekDay,
+				open: hour.open,
+				close: hour.close,
+			});
+		}));
 		return data;
 	}
-
 
 	/**
 	*
