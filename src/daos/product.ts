@@ -2,6 +2,8 @@ import { Product } from '../types';
 import { DB } from '../models/index';
 import { v4 as uuidv4 } from 'uuid';
 
+import { NotFoundError } from '../errorTypes';
+
 export class ProductDao {
 
 	/**
@@ -17,7 +19,7 @@ export class ProductDao {
 	*/
 	async get(id: string): Promise<Product | null> {
 		const data = await DB.Models.Product.get(id);
-		if (data.promotion) {
+		if (data && data.promotion) {
 			data.promotion.promotionHours = await DB.Models.ProductPromotionHour.list(id);
 		}
 		return data;
@@ -51,8 +53,17 @@ export class ProductDao {
 	* @param id
 	*/
 	async update(id: string, product: Product): Promise<Product> {
+		if (!await DB.Models.Product.get(id)) {
+			throw new NotFoundError('This record does not exist. Add it first.')
+		}
+
+		// remove all sub items (add the updated later)
 		await DB.Models.ProductPromotionHour.deleteAll(id);
+
+		// update the main data
 		const data = await DB.Models.Product.update(id, product);
+
+		// add sub items
 		if (product.promotion) {
 			data.promotion.promotionHours = await Promise.all(product.promotion.promotionHours.map(hour => {
 				return DB.Models.ProductPromotionHour.add({

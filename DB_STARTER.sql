@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS public.restaurant
 (
   id text COLLATE pg_catalog."default" NOT NULL,
-  picture bytea,
+  picture text,
   name text COLLATE pg_catalog."default" NOT NULL,
   address text COLLATE pg_catalog."default",
   CONSTRAINT restaurant_pkey PRIMARY KEY (id)
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS public.product
 (
   id text COLLATE pg_catalog."default" NOT NULL,
   restaurant text COLLATE pg_catalog."default" NOT NULL,
-  picture bytea,
+  picture text,
   name text COLLATE pg_catalog."default" NOT NULL,
   price NUMERIC(2) NOT NULL,
   category text COLLATE pg_catalog."default" NOT NULL,

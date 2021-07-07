@@ -50,7 +50,7 @@ export class ProductModel implements Model {
         in_promotion: inPromotion,
         promotion_description: promotionDescription,
         promotion_price: promotionPrice,
-      } = data.rows[0];
+      } = (data.rows.length && data.rows[0]) || {};
 
       return {
         id,
