@@ -1,12 +1,10 @@
 # Goomer Lista Rango
 
-_Projeto em andamento_
-
 Esta API foi criada a partir do desafio [Goomer Dev Backend Interview](https://github.com/goomerdev/job-dev-backend-interview).
 
 ## Antes de começar
 
-A implementação desta API está sendo feita em pequenas partes, para que seja possível trabalhar em poucas horas em cada tarefa. Assim foi trabalhado no pouco tempo disponível.
+A implementação desta API está sendo feita em pequenas partes, para que seja possível trabalhar em poucas horas em cada tarefa.
 
 ### Board Kanban Notion
 A implementação desta API foi estruturada previamente com Tasks e User Story com Sprints no Notion, para acessar e acompanhar o andamento da implementação [clique aqui](https://www.notion.so/19338ed5025044ce9502444c7027bc1b?v=3347c2ab76764b17b35c96aa3ee13292).
@@ -67,8 +65,6 @@ npm run start:dev
 ```
 
 ## O que ainda não foi implementado (baseado no desafio)
-- Tratar e salvar as fotos;
-- Cadastro de Produtos e itens que dependem deste;
 - Testes unitários;
 
 ## Pontos de melhoria
