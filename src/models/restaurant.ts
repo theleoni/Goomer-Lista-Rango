@@ -35,7 +35,14 @@ export class RestaurantModel implements Model {
         WHERE id = $1 LIMIT 1`,
         [_id],
       );
-      const { id, picture, name, address } = data.rows[0];
+
+      const {
+        id,
+        picture,
+        name,
+        address
+      } = (data.rows.length && data.rows[0]) || {};
+
       return {
         id,
         picture: picture || undefined,
@@ -69,7 +76,7 @@ export class RestaurantModel implements Model {
     try {
       await this.CONN.query(
         `UPDATE ${this.tableName}
-        SET picture=$2, name=$3, address=$4
+        SET $2, name=$3, address=$4
         WHERE id=$1`,
         [
           _id,

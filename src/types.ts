@@ -1,7 +1,7 @@
 
 export interface Restaurant {
   id?: string;
-  picture?: any;
+  picture?: string; // BASE 64
   name: string;
   fullAddress: string;
   workingHours?: WorkingHour[];
@@ -28,7 +28,7 @@ export enum WeekDays {
 export interface Product {
   id?: string;
   restaurant: string; // handle the fk (Restaurant)
-  picture?: any;
+  picture?: string; // BASE 64
   name: string;
   price: number;
   category: string;
