@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { DinnerController as Controller } from '../controllers/dinner';
+import { RestaurantController as Controller } from '../controllers/restaurant';
 
 const router = Router();
 const controller = new Controller();
@@ -7,12 +7,12 @@ const controller = new Controller();
 /**
  * Route to list all data
  */
-router.get('/', controller.list);
+router.get('/many', controller.list);
 
 /**
- * Route to get an especifique data by their ID
+ * Route to get an specific data by their ID
  */
-router.get('/:_id', controller.get);
+router.get('/one/:_id', controller.get);
 
 /**
  * Route to add new data
@@ -20,12 +20,12 @@ router.get('/:_id', controller.get);
 router.post('', controller.add);
 
 /**
- * Route to change an especifique data by their ID
+ * Route to change an specific data by their ID
  */
 router.put('/:_id', controller.update);
 
 /**
- * <Route to delete an especifique data by their ID
+ * <Route to delete an specific data by their ID
  */
 router.delete('/:_id', controller.delete);
 

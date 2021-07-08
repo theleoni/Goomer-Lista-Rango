@@ -1,21 +1,22 @@
 import { NextFunction, Request, Response } from 'express';
 import { ParamsDictionary } from 'express-serve-static-core';
 
-import { DinnerDao as Dao } from '../daos/dinner';
-import { DinnerValidation } from './dinner.validation';
+import { ProductDao as Dao } from '../daos/product';
+import { ProductValidation } from './product.validation';
 import { BadRequestError } from '../errorTypes';
 
 const dao = new Dao();
 
-export class DinnerController {
+export class ProductController {
 
   /**
-  * <h1>GET /</h1>
+  * <h1>GET /many/:id</h1>
   * Get a simplified list of all data
   */
   async list(req: Request, res: Response, next: NextFunction) {
     try {
-      const response = await dao.list();
+      const { _id } = req.params as ParamsDictionary;
+      const response = await dao.list(_id);
       return res.status(200).send(response);
     } catch (error) {
       next(error);
@@ -23,7 +24,7 @@ export class DinnerController {
   }
 
   /**
-  * <h1>GET /:id</h1>
+  * <h1>GET /one/:id</h1>
   * Get a unique register based on their ID
   */
   async get(req: Request, res: Response, next: NextFunction) {
@@ -43,7 +44,7 @@ export class DinnerController {
   async add(req: Request, res: Response, next: NextFunction) {
     try {
       // validate body data
-      const { error } = DinnerValidation.validate(req.body);
+      const { error } = ProductValidation.validate(req.body);
       if (error) {
         throw new BadRequestError(error.message);
       }
@@ -62,7 +63,7 @@ export class DinnerController {
   async update(req: Request, res: Response, next: NextFunction) {
     try {
       // validate body data
-      const { error: bodyError } = DinnerValidation.validate(req.body);
+      const { error: bodyError } = ProductValidation.validate(req.body);
       if (bodyError) {
         throw new BadRequestError(bodyError.message);
       }

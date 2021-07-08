@@ -1,7 +1,11 @@
 import { Pool } from 'pg';
 
-import { DinnerModel } from './dinner';
-import { WorkingHourModel } from './workingHours';
+import { RestaurantModel } from './restaurant';
+import { WorkingHourModel } from './workingHour';
+import { ProductModel } from './product';
+import { ProductPromotionHourModel } from './productPromotionHour';
+
+import { NotAcceptableError } from '../errorTypes';
 
 export interface Model {
   readonly tableName: string;
@@ -12,11 +16,11 @@ export class DB {
 
   private static instance: DB;
 
-  // private mongoDB: Connection;
   private models: {
-    Dinner: DinnerModel;
+    Restaurant: RestaurantModel;
     WorkingHour: WorkingHourModel;
-    // Product: IProductModel;
+    Product: ProductModel;
+    ProductPromotionHour: ProductPromotionHourModel;
     // User: IAuthModel;
   };
   private poolConnection: Pool;
@@ -31,16 +35,17 @@ export class DB {
         port: Number(process.env.DB_PORT),
       })
     } catch (err) {
-      console.error(err);
+      throw new NotAcceptableError('DB connections error: ' + err);
     }
 
     this.models = {
-      Dinner: new DinnerModel(this.poolConnection),
+      Restaurant: new RestaurantModel(this.poolConnection),
       WorkingHour: new WorkingHourModel(this.poolConnection),
+      Product: new ProductModel(this.poolConnection),
+      ProductPromotionHour: new ProductPromotionHourModel(this.poolConnection),
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   public static get Models() {
     if (!DB.instance) {
       DB.instance = new DB();

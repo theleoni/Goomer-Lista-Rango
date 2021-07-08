@@ -23,7 +23,7 @@ export const WorkingHourValidation: Joi.AnySchema = Joi.object({
   }),
 });
 
-export const DinnerValidation: Joi.AnySchema = Joi.object({
+export const RestaurantValidation: Joi.AnySchema = Joi.object({
   picture: Joi.any(),
   name: Joi.string().required(),
   fullAddress: Joi.string(),

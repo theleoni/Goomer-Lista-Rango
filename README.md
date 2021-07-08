@@ -1,12 +1,10 @@
 # Goomer Lista Rango
 
-_Projeto em andamento_
-
 Esta API foi criada a partir do desafio [Goomer Dev Backend Interview](https://github.com/goomerdev/job-dev-backend-interview).
 
 ## Antes de começar
 
-A implementação desta API está sendo feita em pequenas partes, para que seja possível trabalhar em poucas horas em cada tarefa. Assim foi trabalhar no pouco tempo disponível.
+A implementação desta API está sendo feita em pequenas partes, para que seja possível trabalhar em poucas horas em cada tarefa.
 
 ### Board Kanban Notion
 A implementação desta API foi estruturada previamente com Tasks e User Story com Sprints no Notion, para acessar e acompanhar o andamento da implementação [clique aqui](https://www.notion.so/19338ed5025044ce9502444c7027bc1b?v=3347c2ab76764b17b35c96aa3ee13292).
@@ -16,13 +14,16 @@ As branches foram criadas seguindo os IDs gerados para cada card do board, mas s
 
 Foi decidido também não criar branches dos épicos por conta do pouco tempo, pois assim oneraria demais o PRs sendo que a implementação foi feita apenas por eu.
 
+### Estrutura Endpoints
+A API utiliza uma estrutura de endpoints que utiliza a metodologia Restfull.
+
 ## Informações úteis
 
 ### Download do projeto
 Após baixar o projeto é preciso instalar os pacotes do projeto com o `NPM`. A execução será feita utilizando `NODE`.
 Dentro do pacote do projeto, instale os pacote com o comando:
 ```
-npm i 
+npm i
 ```
 
 ### Boilerplate utilizado
@@ -64,8 +65,6 @@ npm run start:dev
 ```
 
 ## O que ainda não foi implementado (baseado no desafio)
-- Tratar e salvar as fotos;
-- Cadastro de Produtos e itens que dependem deste;
 - Testes unitários;
 
 ## Pontos de melhoria
